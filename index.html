@@ -1,1 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Invoice Generator Pro</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+</head>
+<body>
 
+<header>
+  <h1>Invoice Generator</h1>
+  <button id="toggleTheme">🌙</button>
+</header>
+
+<div class="container">
+
+  <!-- FORM -->
+  <div class="form">
+
+    <h2>Invoice Details</h2>
+
+    <input id="clientName" placeholder="Client Name">
+    <input id="clientEmail" placeholder="Client Email">
+    <input id="invoiceDate" type="date">
+    <input id="dueDate" type="date">
+
+    <h3>Items</h3>
+    <div id="items"></div>
+    <button onclick="addItem()">+ Add Item</button>
+
+    <h3>Extras</h3>
+    <input id="tax" type="number" placeholder="Tax %">
+    <input id="discount" type="number" placeholder="Discount %">
+
+    <div class="buttons">
+      <button onclick="saveInvoice()">💾 Save</button>
+      <button onclick="loadInvoice()">📂 Load</button>
+      <button onclick="downloadPDF()">📄 Download</button>
+    </div>
+
+  </div>
+
+  <!-- PREVIEW -->
+  <div class="preview" id="invoicePreview">
+    <h2 id="invoiceNumber"></h2>
+
+    <p id="previewClient"></p>
+    <p id="previewEmail"></p>
+    <p id="previewDates"></p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th>Qty</th>
+          <th>Price</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody id="previewItems"></tbody>
+    </table>
+
+    <h3 id="totalDisplay"></h3>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
