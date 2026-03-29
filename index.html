@@ -1,64 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>SmartInvoice Pro</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- PDF LIBRARIES -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
 
-<div class="container">
-  <header>
-    <h1>SmartInvoice Pro</h1>
-    <p>Create professional invoices instantly</p>
-  </header>
+<div id="invoice">
+  <div class="container">
 
-  <!-- CLIENT INFO -->
-  <section class="card">
-    <h2>Invoice Details</h2>
+    <header>
+      <h1>SmartInvoice Pro</h1>
+      <p>Create professional invoices instantly</p>
+    </header>
 
-    <input type="text" id="clientName" placeholder="Client Name" />
-    <input type="text" id="clientAddress" placeholder="Client Address" />
+    <!-- DETAILS -->
+    <section class="card">
+      <h2>Invoice Details</h2>
 
-    <div class="row">
-      <input type="date" id="invoiceDate" />
-      <input type="date" id="dueDate" />
-    </div>
+      <input type="text" id="clientName" placeholder="Client Name">
+      <input type="text" id="clientAddress" placeholder="Client Address">
 
-    <div class="row">
-      <select id="currency">
-        <option value="€">EUR (€)</option>
-        <option value="$">USD ($)</option>
-        <option value="₱">PHP (₱)</option>
-      </select>
+      <div class="row">
+        <input type="date" id="invoiceDate">
+        <input type="date" id="dueDate">
+      </div>
 
-      <select id="vat">
-        <option value="0">No VAT</option>
-        <option value="0.19">VAT 19%</option>
-      </select>
-    </div>
-  </section>
+      <div class="row">
+        <select id="currency">
+          <option value="€">EUR (€)</option>
+          <option value="$">USD ($)</option>
+          <option value="₱">PHP (₱)</option>
+        </select>
 
-  <!-- ITEMS -->
-  <section class="card">
-    <h2>Items</h2>
+        <select id="vat">
+          <option value="0">No VAT</option>
+          <option value="0.19">VAT 19%</option>
+        </select>
+      </div>
+    </section>
 
-    <div id="itemsContainer"></div>
+    <!-- ITEMS -->
+    <section class="card">
+      <h2>Items</h2>
+      <div id="itemsContainer"></div>
+      <button id="addItem">+ Add Item</button>
+    </section>
 
-    <button id="addItem">+ Add Item</button>
-  </section>
+    <!-- SUMMARY -->
+    <section class="card">
+      <h2>Summary</h2>
 
-  <!-- SUMMARY -->
-  <section class="card">
-    <h2>Summary</h2>
+      <div class="summary">
+        <p>Subtotal: <span id="subtotal">0.00</span></p>
+        <p>VAT: <span id="vatAmount">0.00</span></p>
+        <h3>Total: <span id="total">0.00</span></h3>
+      </div>
 
-    <div class="summary">
-      <p>Subtotal: <span id="subtotal">0.00</span></p>
-      <p>VAT: <span id="vatAmount">0.00</span></p>
-      <h3>Total: <span id="total">0.00</span></h3>
-    </div>
-  </section>
+      <button id="downloadPDF">Download PDF</button>
+    </section>
+
+  </div>
 </div>
 
 <script src="script.js"></script>
