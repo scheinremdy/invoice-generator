@@ -1,60 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>SmartInvoice</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartInvoice Pro</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
 <div class="container">
-  <h1>SmartInvoice</h1>
+  <header>
+    <h1>SmartInvoice Pro</h1>
+    <p>Create professional invoices instantly</p>
+  </header>
 
-  <!-- Invoice Info -->
-  <div class="card">
+  <!-- CLIENT INFO -->
+  <section class="card">
     <h2>Invoice Details</h2>
-    <input id="clientName" placeholder="Client Name">
-    <input id="clientAddress" placeholder="Client Address">
-    <input id="date" type="date">
-    <input id="dueDate" type="date">
 
-    <select id="currency">
-      <option value="₱">PHP</option>
-      <option value="€">EUR</option>
-      <option value="$">USD</option>
-    </select>
-  </div>
+    <input type="text" id="clientName" placeholder="Client Name" />
+    <input type="text" id="clientAddress" placeholder="Client Address" />
 
-  <!-- Items -->
-  <div class="card">
+    <div class="row">
+      <input type="date" id="invoiceDate" />
+      <input type="date" id="dueDate" />
+    </div>
+
+    <div class="row">
+      <select id="currency">
+        <option value="€">EUR (€)</option>
+        <option value="$">USD ($)</option>
+        <option value="₱">PHP (₱)</option>
+      </select>
+
+      <select id="vat">
+        <option value="0">No VAT</option>
+        <option value="0.19">VAT 19%</option>
+      </select>
+    </div>
+  </section>
+
+  <!-- ITEMS -->
+  <section class="card">
     <h2>Items</h2>
-    <div id="items"></div>
-    <button onclick="addItem()">+ Add Item</button>
-  </div>
 
-  <!-- Summary -->
-  <div class="card">
+    <div id="itemsContainer"></div>
+
+    <button id="addItem">+ Add Item</button>
+  </section>
+
+  <!-- SUMMARY -->
+  <section class="card">
     <h2>Summary</h2>
-    <p>Subtotal: <span id="subtotal">0</span></p>
-    <p>Tax (10%): <span id="tax">0</span></p>
-    <p>Total: <span id="total">0</span></p>
-  </div>
 
-  <!-- Actions -->
-  <div class="card">
-    <button onclick="saveInvoice()">💾 Save</button>
-    <button onclick="loadInvoices()">📂 Load</button>
-    <button onclick="downloadPDF()">📄 Download PDF</button>
-  </div>
-
-  <!-- Saved -->
-  <div class="card">
-    <h2>Saved Invoices</h2>
-    <ul id="savedList"></ul>
-  </div>
+    <div class="summary">
+      <p>Subtotal: <span id="subtotal">0.00</span></p>
+      <p>VAT: <span id="vatAmount">0.00</span></p>
+      <h3>Total: <span id="total">0.00</span></h3>
+    </div>
+  </section>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
