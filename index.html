@@ -2,70 +2,59 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Invoice Generator Pro</title>
+  <title>SmartInvoice</title>
   <link rel="stylesheet" href="style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
 </head>
 <body>
 
-<header>
-  <h1>Invoice Generator</h1>
-  <button id="toggleTheme">🌙</button>
-</header>
-
 <div class="container">
+  <h1>SmartInvoice</h1>
 
-  <!-- FORM -->
-  <div class="form">
-
+  <!-- Invoice Info -->
+  <div class="card">
     <h2>Invoice Details</h2>
-
     <input id="clientName" placeholder="Client Name">
-    <input id="clientEmail" placeholder="Client Email">
-    <input id="invoiceDate" type="date">
+    <input id="clientAddress" placeholder="Client Address">
+    <input id="date" type="date">
     <input id="dueDate" type="date">
 
-    <h3>Items</h3>
+    <select id="currency">
+      <option value="₱">PHP</option>
+      <option value="€">EUR</option>
+      <option value="$">USD</option>
+    </select>
+  </div>
+
+  <!-- Items -->
+  <div class="card">
+    <h2>Items</h2>
     <div id="items"></div>
     <button onclick="addItem()">+ Add Item</button>
-
-    <h3>Extras</h3>
-    <input id="tax" type="number" placeholder="Tax %">
-    <input id="discount" type="number" placeholder="Discount %">
-
-    <div class="buttons">
-      <button onclick="saveInvoice()">💾 Save</button>
-      <button onclick="loadInvoice()">📂 Load</button>
-      <button onclick="downloadPDF()">📄 Download</button>
-    </div>
-
   </div>
 
-  <!-- PREVIEW -->
-  <div class="preview" id="invoicePreview">
-    <h2 id="invoiceNumber"></h2>
-
-    <p id="previewClient"></p>
-    <p id="previewEmail"></p>
-    <p id="previewDates"></p>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Description</th>
-          <th>Qty</th>
-          <th>Price</th>
-          <th>Total</th>
-        </tr>
-      </thead>
-      <tbody id="previewItems"></tbody>
-    </table>
-
-    <h3 id="totalDisplay"></h3>
+  <!-- Summary -->
+  <div class="card">
+    <h2>Summary</h2>
+    <p>Subtotal: <span id="subtotal">0</span></p>
+    <p>Tax (10%): <span id="tax">0</span></p>
+    <p>Total: <span id="total">0</span></p>
   </div>
 
+  <!-- Actions -->
+  <div class="card">
+    <button onclick="saveInvoice()">💾 Save</button>
+    <button onclick="loadInvoices()">📂 Load</button>
+    <button onclick="downloadPDF()">📄 Download PDF</button>
+  </div>
+
+  <!-- Saved -->
+  <div class="card">
+    <h2>Saved Invoices</h2>
+    <ul id="savedList"></ul>
+  </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
