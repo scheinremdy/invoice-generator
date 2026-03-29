@@ -1,52 +1,83 @@
-body {
-  font-family: Arial;
-  background: #f5f7fa;
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: #f5f7fa;
+  color: #333;
 }
 
 .container {
   max-width: 800px;
-  margin: auto;
+  margin: 40px auto;
   padding: 20px;
 }
 
-h1 {
+header {
   text-align: center;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  font-size: 2rem;
+}
+
+header p {
+  color: #666;
 }
 
 .card {
-  background: white;
-  padding: 15px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.card h2 {
   margin-bottom: 15px;
-  border-radius: 10px;
 }
 
 input, select {
-  display: block;
-  margin: 5px 0;
-  padding: 8px;
   width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
 }
 
 button {
-  margin-top: 10px;
-  padding: 10px;
-  border: none;
   background: #4CAF50;
   color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
-  border-radius: 5px;
 }
 
 button:hover {
-  background: #45a049;
+  background: #43a047;
 }
 
-.item-row {
-  display: flex;
-  gap: 5px;
+.item {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr auto;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
-.item-row input {
-  flex: 1;
+.summary {
+  font-size: 1.1rem;
+}
+
+.summary h3 {
+  margin-top: 10px;
 }
